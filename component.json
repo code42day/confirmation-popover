@@ -9,8 +9,8 @@
     "ui"
   ],
   "dependencies": {
-    "component/inherit": "0.0.3",
-    "component/popover": "*",
+    "code42day/popover": "*",
+    "component/inherit": "*",
     "component/query": "*"
   },
   "development": {
@@ -25,6 +25,5 @@
   "templates": [
     "template.html"
   ],
-  "demo": "http://component.github.io/confirmation-popover/",
   "license": "MIT"
 }

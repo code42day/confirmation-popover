@@ -1,6 +1,6 @@
 {
-  "name": "confirmation-popover-component",
-  "description": "Popover component",
+  "name": "code42day-confirmation-popover",
+  "description": "Popover component with OK/Cancel buttons",
   "version": "1.0.1",
   "keywords": [
     "confirmation",
@@ -9,19 +9,26 @@
     "component"
   ],
   "dependencies": {
-    "popover-component": "*"
+    "code42day-popover": "^1.1.1",
+    "component-inherit": "~0",
+    "component-query": "~0"
   },
-  "component": {
-    "styles": [
-      "popover.css"
-    ],
-    "scripts": {
-      "confirmation-popover/index.js": "index.js",
-      "confirmation-popover/template.js": "template.js"
-    }
+  "browser": {
+    "inherit": "component-inherit",
+    "popover": "popover-component",
+    "query": "component-query"
   },
+  "browserify": {
+    "transform": [
+      "stringify"
+    ]
+  },
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/component/confirmation-popover.git"
+    "url": "https://github.com/code42day/confirmation-popover.git"
+  },
+  "devDependencies": {
+    "stringify": "^3.1.0"
   }
 }
