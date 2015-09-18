@@ -1,7 +1,7 @@
 {
   "name": "code42day-confirmation-popover",
   "description": "Popover component with OK/Cancel buttons",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "keywords": [
     "confirmation",
     "confirm",
