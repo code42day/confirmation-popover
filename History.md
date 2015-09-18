@@ -1,4 +1,9 @@
 
+1.0.2 / 2015-09-17
+==================
+
+ * fork from component/confirmation-popover and browserify support
+
 1.0.1 / 2014-04-11
 ==================
 
