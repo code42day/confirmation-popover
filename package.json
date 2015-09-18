@@ -15,7 +15,7 @@
   },
   "browser": {
     "inherit": "component-inherit",
-    "popover": "popover-component",
+    "popover": "code42day-popover",
     "query": "component-query"
   },
   "browserify": {
