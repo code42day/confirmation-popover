@@ -1,4 +1,9 @@
 
+1.0.4 / 2017-02-18
+==================
+
+ * change name to @pirxpilot/confirmation-popover
+
 1.0.3 / 2015-09-17
 ==================
 
