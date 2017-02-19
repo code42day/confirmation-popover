@@ -8,9 +8,9 @@
 
 ## Installation
 
-```
-$ component install component/confirmation-popover
-```
+  Install with [npm]:
+
+    $ npm install @pirxpilot/confirmation-popover
 
 ## Features
 
@@ -63,3 +63,5 @@ confirm.show(el);
 ## License
 
   MIT
+
+[npm]: https://www.npmjs.org/
