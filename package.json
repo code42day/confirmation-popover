@@ -1,7 +1,7 @@
 {
   "name": "@pirxpilot/confirmation-popover",
   "description": "Popover component with OK/Cancel buttons",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "keywords": [
     "confirmation",
     "confirm",
