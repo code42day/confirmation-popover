@@ -9,7 +9,7 @@
     "component"
   ],
   "dependencies": {
-    "@pirxpilot/popover": "^1.1.3",
+    "@pirxpilot/popover": "^1.1.4",
     "component-inherit": "~0",
     "component-query": "~0"
   },
