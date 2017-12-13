@@ -25,8 +25,7 @@ module.exports = ConfirmationPopover;
 function ConfirmationPopover(msg, title) {
   Popover.call(this, require('./template.html'), title);
   this.classname = 'popover confirmation-popover';
-  this.events.bind('click .cancel', 'oncancel');
-  this.events.bind('click .ok', 'onok');
+  this.events.bind('click');
   this.confirmation(msg);
 }
 
@@ -35,6 +34,20 @@ function ConfirmationPopover(msg, title) {
  */
 
 inherit(ConfirmationPopover, Popover);
+
+/**
+ * Handle click.
+ *
+ */
+
+ConfirmationPopover.prototype.click = function(e){
+  var cl = e.target.classList;
+  if (cl.contains('ok')) {
+    this.onok(e);
+  } else if (cl.contains('cancel')) {
+    this.oncancel(e);
+  }
+};
 
 /**
  * Handle cancel click.
