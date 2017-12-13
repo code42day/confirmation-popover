@@ -1,4 +1,10 @@
 
+1.0.6 / 2017-12-13
+==================
+
+ * minify HTML template
+ * stop using events delegation
+
 1.0.5 / 2017-03-18
 ==================
 
