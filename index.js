@@ -3,15 +3,7 @@
  * Module dependencies.
  */
 
-var Popover = require('popover');
-var q = require('query');
-var inherit = require('inherit');
-
-/**
- * Expose `ConfirmationPopover`.
- */
-
-module.exports = ConfirmationPopover;
+const Popover = require('@pirxpilot/popover');
 
 /**
  * Initialize a `ConfirmationPopover` with the given `msg`
@@ -22,131 +14,133 @@ module.exports = ConfirmationPopover;
  * @api public
  */
 
-function ConfirmationPopover(msg, title) {
-  Popover.call(this, require('./template.html'), title);
-  this.classname = 'popover confirmation-popover';
-  this.events.bind('click');
-  this.confirmation(msg);
+class ConfirmationPopover extends Popover {
+  constructor(msg, title) {
+    super(require('./template.html'), title);
+    this.classname = 'popover confirmation-popover';
+    this.events.bind('click');
+    this.confirmation(msg);
+  }
+
+  /**
+   * Handle click.
+   *
+   */
+
+  click(e) {
+    const cl = e.target.classList;
+    if (cl.contains('ok')) {
+      this.onok(e);
+    } else if (cl.contains('cancel')) {
+      this.oncancel(e);
+    }
+  }
+
+  /**
+   * Handle cancel click.
+   *
+   * Emits "cancel".
+   *
+   * @param {Event} e
+   * @api private
+   */
+
+  oncancel(e) {
+    e.preventDefault();
+    this.emit('cancel');
+    this.callback(false);
+    this.hide();
+  }
+
+  /**
+   * Handle ok click.
+   *
+   * Emits "ok".
+   *
+   * @param {Event} e
+   * @api private
+   */
+
+  onok(e) {
+    e.preventDefault();
+    this.emit('ok');
+    this.callback(true);
+    this.hide();
+  }
+
+  /**
+   * Set confirmation `msg`.
+   *
+   * @param {String} msg
+   * @return {ConfirmationPopover}
+   * @api public
+   */
+
+  confirmation(msg) {
+    const el = this.el.querySelector('.confirmation-popover-message');
+    if (typeof msg === 'string') el.innerHTML = msg;
+    else el.appendChild(msg);
+    return this;
+  }
+
+  /**
+   * Focus `type`, either "ok" or "cancel".
+   *
+   * @param {String} type
+   * @return {ConfirmationPopover}
+   * @api public
+   */
+
+  focus(type) {
+    this._focus = type;
+    return this;
+  }
+
+  /**
+   * Change "cancel" button `text`.
+   *
+   * @param {String} text
+   * @return {ConfirmationPopover}
+   * @api public
+   */
+
+  cancel(text) {
+    this.el.querySelector('.cancel').innerHTML = text;
+    return this;
+  }
+
+  /**
+   * Change "ok" button `text`.
+   *
+   * @param {String} text
+   * @return {ConfirmationPopover}
+   * @api public
+   */
+
+  ok(text) {
+    this.el.querySelector('.ok').innerHTML = text;
+    return this;
+  }
+
+  /**
+   * Show the tip attached to `el` and invoke `fn(ok)`.
+   *
+   * @param {jQuery|Element} el
+   * @param {Function} fn
+   * @return {ConfirmationPopover}
+   * @api public
+   */
+
+  show(el, fn = () => {}) {
+    super.show(el);
+    if (this._focus) this.el.querySelector(`.${this._focus}`).focus();
+    this.callback = fn;
+    return this;
+  }
 }
 
 /**
- * Inherits from `Popover.prototype`.
+ * Expose `ConfirmationPopover`.
  */
 
-inherit(ConfirmationPopover, Popover);
-
-/**
- * Handle click.
- *
- */
-
-ConfirmationPopover.prototype.click = function(e){
-  var cl = e.target.classList;
-  if (cl.contains('ok')) {
-    this.onok(e);
-  } else if (cl.contains('cancel')) {
-    this.oncancel(e);
-  }
-};
-
-/**
- * Handle cancel click.
- *
- * Emits "cancel".
- *
- * @param {Event} e
- * @api private
- */
-
-ConfirmationPopover.prototype.oncancel = function(e){
-  e.preventDefault();
-  this.emit('cancel');
-  this.callback(false);
-  this.hide();
-};
-
-/**
- * Handle ok click.
- *
- * Emits "ok".
- *
- * @param {Event} e
- * @api private
- */
-
-ConfirmationPopover.prototype.onok = function(e){
-  e.preventDefault();
-  this.emit('ok');
-  this.callback(true);
-  this.hide();
-};
-
-/**
- * Set confirmation `msg`.
- *
- * @param {String} msg
- * @return {ConfirmationPopover}
- * @api public
- */
-
-ConfirmationPopover.prototype.confirmation = function(msg){
-  var el = q('.confirmation-popover-message', this.el);
-  if (typeof msg === 'string') el.innerHTML = msg;
-  else el.appendChild(msg);
-  return this;
-};
-
-/**
- * Focus `type`, either "ok" or "cancel".
- *
- * @param {String} type
- * @return {ConfirmationPopover}
- * @api public
- */
-
-ConfirmationPopover.prototype.focus = function(type){
-  this._focus = type;
-  return this;
-};
-
-/**
- * Change "cancel" button `text`.
- *
- * @param {String} text
- * @return {ConfirmationPopover}
- * @api public
- */
-
-ConfirmationPopover.prototype.cancel = function(text){
-  q('.cancel', this.el).innerHTML = text;
-  return this;
-};
-
-/**
- * Change "ok" button `text`.
- *
- * @param {String} text
- * @return {ConfirmationPopover}
- * @api public
- */
-
-ConfirmationPopover.prototype.ok = function(text){
-  q('.ok', this.el).innerHTML = text;
-  return this;
-};
-
-/**
- * Show the tip attached to `el` and invoke `fn(ok)`.
- *
- * @param {jQuery|Element} el
- * @param {Function} fn
- * @return {ConfirmationPopover}
- * @api public
- */
-
-ConfirmationPopover.prototype.show = function(el, fn){
-  Popover.prototype.show.call(this, el);
-  if (this._focus) q('.' + this._focus, this.el).focus();
-  this.callback = fn || function(){};
-  return this;
-};
+module.exports = ConfirmationPopover;

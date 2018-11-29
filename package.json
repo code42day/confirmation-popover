@@ -9,14 +9,7 @@
     "component"
   ],
   "dependencies": {
-    "@pirxpilot/popover": "~1",
-    "component-inherit": "~0",
-    "component-query": "~0"
-  },
-  "browser": {
-    "inherit": "component-inherit",
-    "popover": "@pirxpilot/popover",
-    "query": "component-query"
+    "@pirxpilot/popover": "~2"
   },
   "browserify": {
     "transform": [
