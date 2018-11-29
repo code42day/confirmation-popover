@@ -1,4 +1,11 @@
 
+2.0.0 / 2018-11-28
+==================
+
+ * remove component-query dependency
+ * rewrite in ES6
+ * upgrade @pirxpilot/popover to ~2
+
 1.0.6 / 2017-12-13
 ==================
 
