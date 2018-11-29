@@ -3,7 +3,7 @@
  * Module dependencies.
  */
 
-var Popover = require('popover');
+var Popover = require('@pirxpilot/popover');
 var q = require('query');
 var inherit = require('inherit');
 

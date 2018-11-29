@@ -3,7 +3,7 @@ CSS = node_modules/@pirxpilot/tip/tip.css
 build: index.js template.html node_modules
 	@mkdir -p build
 	@browserify \
-		--require popover \
+		--require @pirxpilot/popover \
 		--require ./index.js:confirmation-popover \
 		--outfile build/build.js
 

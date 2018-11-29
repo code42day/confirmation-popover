@@ -9,13 +9,12 @@
     "component"
   ],
   "dependencies": {
-    "@pirxpilot/popover": "~1",
+    "@pirxpilot/popover": "~2",
     "component-inherit": "~0",
     "component-query": "~0"
   },
   "browser": {
     "inherit": "component-inherit",
-    "popover": "@pirxpilot/popover",
     "query": "component-query"
   },
   "browserify": {
