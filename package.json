@@ -9,11 +9,7 @@
     "component"
   ],
   "dependencies": {
-    "@pirxpilot/popover": "~2",
-    "component-query": "~0"
-  },
-  "browser": {
-    "query": "component-query"
+    "@pirxpilot/popover": "~2"
   },
   "browserify": {
     "transform": [

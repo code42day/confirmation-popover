@@ -4,7 +4,6 @@
  */
 
 const Popover = require('@pirxpilot/popover');
-const q = require('query');
 
 /**
  * Initialize a `ConfirmationPopover` with the given `msg`
@@ -78,7 +77,7 @@ class ConfirmationPopover extends Popover {
    */
 
   confirmation(msg) {
-    const el = q('.confirmation-popover-message', this.el);
+    const el = this.el.querySelector('.confirmation-popover-message');
     if (typeof msg === 'string') el.innerHTML = msg;
     else el.appendChild(msg);
     return this;
@@ -106,7 +105,7 @@ class ConfirmationPopover extends Popover {
    */
 
   cancel(text) {
-    q('.cancel', this.el).innerHTML = text;
+    this.el.querySelector('.cancel').innerHTML = text;
     return this;
   }
 
@@ -119,7 +118,7 @@ class ConfirmationPopover extends Popover {
    */
 
   ok(text) {
-    q('.ok', this.el).innerHTML = text;
+    this.el.querySelector('.ok').innerHTML = text;
     return this;
   }
 
@@ -134,7 +133,7 @@ class ConfirmationPopover extends Popover {
 
   show(el, fn = () => {}) {
     super.show(el);
-    if (this._focus) q(`.${this._focus}`, this.el).focus();
+    if (this._focus) this.el.querySelector(`.${this._focus}`).focus();
     this.callback = fn;
     return this;
   }
