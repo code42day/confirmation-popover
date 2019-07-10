@@ -26,7 +26,7 @@ const template = `
 
 class ConfirmationPopover extends Popover {
   constructor(msg, title) {
-    super(require(template), title);
+    super(template, title);
     this.classname = 'popover confirmation-popover';
     this.events.bind('click');
     this.confirmation(msg);
