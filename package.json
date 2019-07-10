@@ -11,22 +11,8 @@
   "dependencies": {
     "@pirxpilot/popover": "~2"
   },
-  "browserify": {
-    "transform": [
-      "stringify"
-    ]
-  },
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pirxpilot/confirmation-popover.git"
-  },
-  "devDependencies": {
-    "stringify": "~5"
-  },
-  "stringify": {
-    "minify": true
-  },
+  "repository": "pirxpilot/confirmation-popover",
   "files": [
     "index.js",
     "popover.css"
