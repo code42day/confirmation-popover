@@ -14,9 +14,19 @@ const Popover = require('@pirxpilot/popover');
  * @api public
  */
 
+const template = `
+<div class="confirmation-popover-content">
+  <div class="confirmation-popover-message"></div>
+  <div class="confirmation-popover-actions">
+    <button class="cancel">Cancel</button>
+    <button class="ok main">Ok</button>
+  </div>
+</div>
+`;
+
 class ConfirmationPopover extends Popover {
   constructor(msg, title) {
-    super(require('./template.html'), title);
+    super(template, title);
     this.classname = 'popover confirmation-popover';
     this.events.bind('click');
     this.confirmation(msg);

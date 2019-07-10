@@ -2,8 +2,12 @@ CSS = node_modules/@pirxpilot/tip/tip.css \
 	build/aurora-tip.css \
 	popover.css
 
-build: index.js template.html node_modules
+all: build/build.js build/build.css build/aurora-tip.css
+
+build:
 	@mkdir -p build
+
+build/build.js: index.js | build node_modules
 	@browserify \
 		--require @pirxpilot/popover \
 		--require ./index.js:confirmation-popover \
@@ -14,7 +18,7 @@ build/build.css: $(CSS) | build
 
 build/aurora-tip.css: | build
 	curl \
-		--compress \
+		--compressed \
 		--output $@ \
 		https://raw.githubusercontent.com/component/aurora-tip/master/aurora-tip.css
 
@@ -27,4 +31,4 @@ clean:
 test: build build/build.css
 	@open test/index.html
 
-.PHONY: clean build test
+.PHONY: clean all test
