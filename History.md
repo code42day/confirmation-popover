@@ -1,4 +1,11 @@
 
+2.0.1 / 2019-07-09
+==================
+
+ * fix build
+ * remove stringify transformation
+ * replace template.html with template string
+
 2.0.0 / 2018-11-28
 ==================
 
