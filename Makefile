@@ -2,7 +2,7 @@ CSS = node_modules/@pirxpilot/tip/tip.css \
 	build/aurora-tip.css \
 	popover.css
 
-build: index.js template.html node_modules
+build: index.js | node_modules
 	@mkdir -p build
 	@browserify \
 		--require @pirxpilot/popover \

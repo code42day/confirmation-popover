@@ -29,7 +29,6 @@
   },
   "files": [
     "index.js",
-    "popover.css",
-    "template.html"
+    "popover.css"
   ]
 }
